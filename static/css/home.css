@@ -1,0 +1,391 @@
+@import url('https://fonts.googleapis.com/css?family=Cutive+Mono|Questrial');
+
+html, body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	box-sizing: border-box;
+
+
+}
+
+h1, h2, h3, h4 {
+	text-align: center;
+	font-family: 'Questrial', sans-serif;
+	text-transform: uppercase;
+}
+
+a {
+	text-decoration: none;
+	color: white;
+}
+
+a:hover {
+	text-decoration: none;
+	color: white;
+}
+
+a:focus {
+	text-decoration: none;
+	color: white;
+}
+
+p {
+	font-family: 'Cutive Mono', monospace;
+}
+
+.banner {
+	height: 100%;
+	width: 100%;
+}
+
+#nav {
+	height: 6%;
+	display: flex;
+	font-family: 'Questrial', sans-serif;
+}
+
+#bannerImage {
+	width: 100%;
+	height: 94%;	
+	position: relative;
+	background-image: url("./../img/banner.jpeg");
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	margin: 0;
+	padding: 0;
+}
+
+#infobox {
+	position: absolute;	
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
+
+
+.col-xs-6 {
+	text-align: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.col-xs-6 h3 {
+	text-align: center;
+	padding: 0;
+	margin: 0;	
+
+}
+
+ul {
+	margin: 0;
+
+}
+
+ul li {
+	
+	margin: 1em;
+	display: inline-block;
+	letter-spacing: 3px;
+	cursor: pointer;
+}
+
+ul li:hover {
+	color: #FDEEE7;
+}
+
+#infobox {
+	text-align: center;
+	color: white;
+}
+
+#infobox h1 {
+
+	
+	text-transform: uppercase;
+	margin-bottom: 0.5em;
+	position: relative;
+	padding-bottom: 0.5em;
+
+}
+
+#infobox h1::after {
+	content: "";
+	width: 30px;
+	height: 2px;
+	position: absolute;
+	margin: auto;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: white;
+
+}
+
+#infobox p {
+	font-family: 'Cutive Mono', monospace;
+	margin-bottom: 2em;
+
+}
+
+.btn-primary-transparent {
+	font-family: 'Cutive Mono', monospace;
+	background-color: transparent;
+	border-color: #ccc;
+	border-radius: 0;
+}
+
+.btn-primary-transparent:hover {
+	background-color: white;
+	box-shadow: none;
+	text-decoration: none;
+
+}
+
+
+.btn-primary-transparent:focus {
+	outline: 0;
+	background-color: white;
+}
+
+#about {
+	
+	background-color: #F7F7F7;
+	position: relative;
+
+}
+
+#about .row {
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	text-align: center;
+	padding-top: 6em;
+	padding-bottom: 6em;
+}
+
+#about .row h4 {
+	
+	text-transform: uppercase;
+	color: #898989;
+	font-weight: bold;
+	letter-spacing: 3px;
+	margin-bottom: 1em;
+	padding-bottom: 1em;
+	position: relative;
+}
+
+#about .row h4::after {
+	content: "";
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	width: 20px;
+	height: 3px;
+	background-color: #898989;
+	margin: auto;
+
+}
+
+
+
+
+#collections {
+
+	padding-bottom: 2em;
+	
+}
+
+#collections:after {
+
+	content: "";
+	display: block;
+	clear: both;
+	margin-bottom: 2em;
+
+}
+
+
+#collections #collec-header h2  {
+
+	margin: 1.5em;
+	position: relative;
+	padding-bottom: 0.25em;
+}
+
+.row:nth-of-type(1) h2::after {
+	content: "";
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	width: 20px;
+	height: 3px;
+	background-color: #898989;
+	margin: auto;
+}
+
+#img-row { /*second row*/
+	
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	flex-wrap: wrap;
+	margin-bottom: 3em;
+}
+
+#collections .row .col-xs-12 {
+
+	height: 345px;
+	margin: 1em 0;		
+
+}
+
+#collections .row .col-xs-12 .img-holder {
+	height: 100%;	
+	position: relative;
+	overflow: hidden;
+
+}
+
+.collection-image {
+	height: 100%;
+	width: 100%;
+	display: block;	
+	position: relative;
+}
+
+#c-one {
+	background: url('./../img/c1.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+#c-two {
+	background: url('./../img/c4r.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+#c-three {
+	background: url('./../img/c5r.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+.content-layer {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	width: 90%;
+	margin: 0 auto;
+	left: 0;
+	right: 0;
+	z-index: 100;
+	text-align: center;
+}
+
+.img-overlay:hover #c-one {
+	transform: translateY(30px);
+}
+
+.img-overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	height: 100%;
+	width: 100%;
+	z-index: 10;
+	background: black;
+	opacity: 0.2;
+	cursor: pointer;
+	margin: auto;
+}
+
+#message-section {
+
+	background: #F7F7F7;
+}
+
+#message-section .col-xs-12 {
+	padding: 0;
+}
+
+#message-section .row:nth-of-type(1) {
+	
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-content: center;
+	flex-wrap: wrap;
+	text-align: center;
+}
+
+#message-section .row:nth-of-type(2) {
+
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-content: center;
+	flex-wrap: wrap-reverse;
+	text-align: center;
+
+
+}
+
+.message-msg {
+
+	padding-top: 6em;
+	padding-bottom: 6em;
+	width: 70%;
+	margin: auto;
+
+}
+
+.message-image {
+
+	display: block;
+	position: relative;
+	height: 397px;
+	
+
+}
+
+#msg-img-one {
+
+	background-image: url('./../img/c2r.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+
+}
+
+#msg-img-two {
+
+	background-image: url('./../img/c3r.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+
+@media (max-width: 575px) { 
+
+
+
+ }
+
+// Small devices (landscape phones, less than 768px)
+@media (max-width: 767px) { 
+
+
+
+ }
+
+// Medium devices (tablets, less than 992px)
+@media (max-width: 991px) {  }
+
+// Large devices (desktops, less than 1200px)
+@media (max-width: 1199px) {  }
