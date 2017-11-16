@@ -4,7 +4,7 @@ html, body {
 	margin: 0;
 	padding: 0;
 	height: 100%;
-	box-sizing: border-box;
+/*	box-sizing: border-box;*/
 
 
 }
@@ -240,11 +240,12 @@ ul li:hover {
 #collections .row .col-xs-12 {
 
 	height: 345px;
-	margin: 1em 0;		
+	margin: 1em 0;
+	padding: 0;	
 
 }
 
-#collections .row .col-xs-12 .img-holder {
+.img-holder {
 	height: 100%;	
 	position: relative;
 	overflow: hidden;
@@ -256,6 +257,10 @@ ul li:hover {
 	width: 100%;
 	display: block;	
 	position: relative;
+}
+
+.content-layer h2 {
+	margin: 20px;
 }
 
 #c-one {
@@ -342,7 +347,26 @@ ul li:hover {
 	padding-bottom: 6em;
 	width: 70%;
 	margin: auto;
+	position: relative;
 
+}
+
+.message-msg h3 {
+	position: relative;
+	padding-bottom: 0.5em;
+}
+
+.message-msg h3:after {
+
+	content: "";
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	width: 20px;
+	height: 3px;
+	background-color: #898989;
+	margin: auto;
 }
 
 .message-image {
@@ -370,6 +394,47 @@ ul li:hover {
 	background-repeat: no-repeat;
 	background-position: center;
 }
+
+#featured h3 {
+	padding: 2em;
+}
+
+.f-products {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-content: center;
+}
+
+.product-info a {
+	text-decoration: none;
+	color: black;
+}
+
+.product-info p {
+	font-weight: bold;
+	margin: 0;
+	padding-top: 1em;
+}
+
+.product-info span {
+	font-family: 'Cutive Mono', monospace;
+}
+
+#featured .col-xs-6 {
+
+	overflow: hidden;
+	margin: 1em 0;
+	padding: 0;
+
+	
+}
+
+img {
+	height: auto;
+	max-width: 100%;
+}
+
 
 @media (max-width: 575px) { 
 
