@@ -79,7 +79,7 @@ p {
 
 }
 
-ul {
+.col-xs-6 ul {
 	margin: 0;
 
 }
@@ -354,6 +354,7 @@ ul li:hover {
 .message-msg h3 {
 	position: relative;
 	padding-bottom: 0.5em;
+	color: #898989;
 }
 
 .message-msg h3:after {
@@ -421,11 +422,15 @@ ul li:hover {
 	font-family: 'Cutive Mono', monospace;
 }
 
-#featured .col-xs-6 {
+#featured .col-xs-6 { /*this is effecting the height for some reason*/
 
 	overflow: hidden;
 	margin: 1em 0;
 	padding: 0;
+	text-align: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 
 	
 }
@@ -438,14 +443,30 @@ img {
 
 @media (max-width: 575px) { 
 
+#mobile-hide {
+	display: none;
+}
 
+.col-xs-12 h3 {
+	font-size: 1.2em;
+	margin: auto;
+	padding: 0.8em
+}
 
  }
 
 // Small devices (landscape phones, less than 768px)
 @media (max-width: 767px) { 
 
+#mobile-hide {
+	display: none;
+}
 
+.col-xs-12 h3 {
+	font-size: 1.2em;
+	margin: auto;
+	padding: 0.8em;
+}
 
  }
 
