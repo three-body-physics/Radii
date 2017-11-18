@@ -42,7 +42,7 @@ p {
 }
 
 #navbar {
-	height: 6%;	
+
 	font-family: 'Questrial', sans-serif;
 	background: white;
 	border: none;
@@ -525,19 +525,25 @@ img {
 	max-height: 1100px;
 }
 
+#newsletter {
+	padding: 0;
+	margin-top: 2em;
+}
+
 #newsletter .row {
 
 	margin: 3em 0;
 /*	background: #FDC476;*/
 	text-align: center;
 	position: relative;
+	background: #F7F7F7;
 
 }
 
 #newsletter .row .col-xs-12 {
 	
-	border-left: 1px solid #D3D3D3;
-	border-right: 1px solid #D3D3D3;
+	border-left: 1px solid grey;
+	border-right: 1px solid grey;
 	margin-top: 4em;
 	margin-bottom: 3em;
 	position: relative;
@@ -592,7 +598,7 @@ box-shadow: 0px 0px 27px -10px rgba(0,0,0,0.75);
 
 #instagram {
 	
-	background: #D3D3D3;
+	
 	height: 500px;
 }
 
@@ -649,15 +655,40 @@ box-shadow: 0px 0px 27px -10px rgba(0,0,0,0.75);
 // Medium devices (tablets, less than 992px)
 @media (max-width: 991px) { 
 
+#newsletter .row .col-xs-12 {	
+
+	margin-top: 1em;
+	margin-bottom: 1em;
+	
+}
+
+#newsletter .row {
+
+	margin-top: 4em;
+
+}
+
+#cart {
+	background: none;
+}
 
 }
 
 
 }
 
-// Large devices (desktops, less than 1200px)
+
+@media only screen 
+and (min-width : 1024px) 
+and (max-width : 1366px) { 
+
+/*#navbar {
+	height: 3%;	
+}
+*/
+}
+
 @media (max-width: 1199px) { 
-
 
 
  }
