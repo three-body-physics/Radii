@@ -11,6 +11,9 @@ router.get("/home/login", mainCtrl.loginPage);
 router.get("/home/register", mainCtrl.registerPage);
 
 router.post("/home/register", mainCtrl.registerUser);
-router.post("/home/login", mainCtrl.authCheck, mainCtrl.loginUser);
+router.post("/home/login", mainCtrl.authenticate, mainCtrl.loginUser);
+router.get("/home/logout", mainCtrl.logoutUser);
+router.get("/home/user/:userid", mainCtrl.checkAuth, mainCtrl.userProfile);
+router.get("/home/products/:productid", mainCtrl.productPage);
 
 module.exports = router;

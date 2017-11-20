@@ -950,14 +950,15 @@ img {
 
 
 #register .btn:hover,
-#login .btn:hover {
+#login .btn:hover,
+#product-page .btn:hover {
 
     -webkit-box-shadow: 0px 0px 27px -10px rgba(0, 0, 0, 0.75);
     box-shadow: 0px 0px 27px -10px rgba(0, 0, 0, 0.75);
 }
 
 .formError {
-    
+
     border: 1px solid #FF0000;
     color: #FF0000;
     background: #FFF6F6;
@@ -965,6 +966,52 @@ img {
     margin: 1em auto;
     width: 60%;
 
+}
+
+#product-page {
+    margin-top: 10em;
+
+}
+
+#product-page .row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;    
+}
+
+#product-page .row .col-xs-12:nth-of-type(1) > div {
+    
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+  
+}
+
+#product-page img {
+    max-width: 80%;
+    height: auto;
+
+
+}
+
+#product-page input:nth-of-type(1) {
+    width: 10%;
+}
+
+#product-page input {
+    display: block;
+    margin: 2em auto;
+}
+
+#product-des {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+       
 }
 
 @media (max-width: 575px) {

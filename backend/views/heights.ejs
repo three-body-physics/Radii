@@ -97,16 +97,18 @@
         <div class="row" id="f-products">
           <% products.forEach(function(p) { %>  
             <div class="col-xs-6 col-md-3">
+                <a href="/home/products/<%= p._id %>">
                 <div class="img-holder">
                     <img src="<%= p.img %>">
                     <div class="product-info">
-                        <a href="">
+                        
                             <p><%= p.label %></p>
                             <span>£<%= p.price %></span>
-                        </a>
+                        
                     </div>
                     <div class="img-overlay"></div>
                 </div>
+                </a>
             </div>
           <% }) %>
         </div>
