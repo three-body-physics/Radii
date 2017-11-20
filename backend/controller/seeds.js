@@ -1,13 +1,18 @@
 var products = [
 {
-	img: "/img/p2.jpg",
-	label: "SWISS",
+	img: "/img/p5.jpg",
+	label: "Breeze",
 	price: 39.99
 },
 {
 	img: "/img/p3.jpg",
-	label: "Biker Leather",
+	label: "Biker",
 	price: 49.99
+},
+{
+	img: "/img/p7.jpg",
+	label: "Ruby",
+	price: 29.99
 },
 {
 	img: "/img/p4.jpg",
@@ -15,28 +20,23 @@ var products = [
 	price: 29.99
 },
 {
-	img: "/img/p1.jpg",
-	label: "Fiber Bag",
-	price: 29.99
-},
-{
 	img: "/img/p2.jpg",
-	label: "SWISS Cover",
+	label: "SWISS",
 	price: 19.99
 },
 {
-	img: "/img/p3.jpg",
-	label: "Biker dragon",
+	img: "/img/p8.jpg",
+	label: "Bronze",
 	price: 48.99
 },
 {
-	img: "/img/p4.jpg",
-	label: "Winter white",
-	price: 34.99
+	img: "/img/p6.jpg",
+	label: "Eskimos",
+	price: 64.99
 },
 {
 	img: "/img/p1.jpg",
-	label: "Bag",
+	label: "Silhouette",
 	price: 24.99
 }
 ]

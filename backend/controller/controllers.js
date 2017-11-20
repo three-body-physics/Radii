@@ -26,6 +26,9 @@ passport.deserializeUser(User.deserializeUser());
 //middelware for checking if User logged in or not, token from header is decoded and verified to see if it belongs to Admin
 var session;
 
+// var seed = require("./seeds.js");
+// seed.seed(Product);
+
 module.exports.authenticate = function(req, res, next) {
 
     passport.authenticate("local", { failureFlash: true }, function(err, user, info) {
@@ -99,7 +102,7 @@ module.exports.registerPage = function(req, res) {
 
 module.exports.loginUser = function(req, res) {
 
-    res.redirect("/home");
+    res.redirect("/home/user/" + req.user._id);
 
 }
 
@@ -130,14 +133,33 @@ module.exports.registerUser = function(req, res) {
 
 module.exports.logoutUser = function(req, res) {
     req.logOut();
-    res.redirect("/home");
+    req.session.destroy(function(err) {
+        if (err) {
+            return console.log(err)
+        }
+        res.redirect("/home");
+    })
+    
 }
 
 module.exports.userProfile = function(req, res) {
-    var i = req.user.orders.length - 1;
 
-    res.render("account", { loggedIn: req.user, order: req.user.orders[i] });
+    User.findById(req.user._id).populate({
+        path: "orders",
+        populate: {
+            path: "products.product",
+            model: "Product"
+        }
+    }).exec(function(err, user) {
 
+        if (err) {
+            return res.redirect("/login")
+        }
+
+        
+        res.render("account", { loggedIn: req.user, user: user });
+
+    });
 }
 
 module.exports.productPage = function(req, res) {
@@ -180,11 +202,11 @@ module.exports.createOrder = function(req, res) {
         }
 
         if (req.isAuthenticated()) {
-            
+
             session.order.email = req.user.email;
 
         }
-        
+
         res.redirect("/home");
 
 
@@ -196,6 +218,32 @@ module.exports.cart = function(req, res) {
 
     session = req.session;
 
-    res.render("cart", {loggedIn: req.user, order: session.order});
+    res.render("cart", { loggedIn: req.user, order: session.order });
+
+}
+
+module.exports.checkOut = function(req, res) {
+
+    session = req.session;
+
+    User.findById(req.user._id, function(err, user) {
+        if (err) {
+            return console.log(err)
+        }
+
+        req.session.order.email = user.email;
+        Order.create(session.order, function(err, order) {
+            order.paid = true;
+            order.save();
+            user.orders.push(order);
+            user.save();
+            
+        });
+
+        session.order = null;
+
+        res.redirect("/home/user/" + user._id);
+    });
+
 
 }

@@ -1,6 +1,7 @@
 var body = $('html, body'),
     shop = $('#featured');
 
+
 $('#scroll').click(function() {
 
 body.animate({
@@ -8,3 +9,4 @@ body.animate({
 }, 1000);
 
 });
+
