@@ -6,7 +6,7 @@ module.exports = new mongoose.Schema({
     price: Number,
     date: { type: Date, default: Date.now },
     paid: Boolean,
-    order: [
+    products: [
 
         {
             product: {

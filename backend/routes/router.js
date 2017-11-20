@@ -16,5 +16,6 @@ router.get("/home/logout", mainCtrl.logoutUser);
 router.get("/home/user/:userid", mainCtrl.checkAuth, mainCtrl.userProfile);
 router.get("/home/products/:productid", mainCtrl.productPage);
 router.post("/home/products/:productid", mainCtrl.createOrder);
+router.get("/home/cart", mainCtrl.cart)
 
 module.exports = router;

@@ -24,6 +24,7 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 //middelware for checking if User logged in or not, token from header is decoded and verified to see if it belongs to Admin
+var session;
 
 module.exports.authenticate = function(req, res, next) {
 
@@ -133,8 +134,10 @@ module.exports.logoutUser = function(req, res) {
 }
 
 module.exports.userProfile = function(req, res) {
+    var i = req.user.orders.length - 1;
 
-    res.send(req.user)
+    res.render("account", { loggedIn: req.user, order: req.user.orders[i] });
+
 }
 
 module.exports.productPage = function(req, res) {
@@ -154,53 +157,45 @@ module.exports.productPage = function(req, res) {
 
 module.exports.createOrder = function(req, res) {
 
-    var session = req.session;
+    session = req.session;
 
     Product.findById(req.params.productid, function(err, prod) {
 
         if (!session.order) {
 
-            Order.create({ order: [{ product: prod, quantity: req.body.quantity }] }, function(err, order) {
-                if (err) {
-                    return res.json({
-                        success: false,
-                        message: err
-                    });
-                }
-                order.paid = false;
-                order.price = prod.price * req.body.quantity;
-
-                if (req.isAuthenticated()) {                   
-
-                        order.email = req.user.email;
-                        order.save();
-                        req.user.orders.push(order);                        
-                   
-                }
-
-                session.order = order;
-                res.redirect("/home");
-                console.log(session.order);
-
-            });
+            session.order = {
+                price: prod.price,
+                paid: false,
+                products: [{
+                    product: prod,
+                    quantity: req.body.quantity
+                }]
+            };
 
         } else {
 
-            session.order.order.push({ product: prod, quantity: req.body.quantity });
+            session.order.products.push({ product: prod, quantity: req.body.quantity });
             session.order.price = session.order.price + (prod.price * req.body.quantity);
-
-            if (req.isAuthenticated()) {
-            
-                req.user.orders = session.order.order;                    
-               
-            }
-
-            console.log(session.order);
-            res.redirect("/home");
 
         }
 
+        if (req.isAuthenticated()) {
+            
+            session.order.email = req.user.email;
+
+        }
+        
+        res.redirect("/home");
+
 
     });
+
+}
+
+module.exports.cart = function(req, res) {
+
+    session = req.session;
+
+    res.render("cart", {loggedIn: req.user, order: session.order});
 
 }
