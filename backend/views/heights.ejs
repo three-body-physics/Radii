@@ -1,40 +1,6 @@
-<!doctype html>
-<html lang="en" ng-app>
+<%- include('./partials/header') %>
 
-<head>
-    <title>Chat Example</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <!-- <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script> -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="./static/css/home.css" type="text/css" />
-</head>
-
-<body>
     <div class="banner">
-        <nav class="navbar navbar-default" id="navbar">
-            <div class="container">
-                <div class="navbar-header" id="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="#">Liifye</a>
-                </div>
-                <div class="collapse navbar-collapse" id="myNavbar">
-                    <ul class="nav navbar-nav navbar-right" id="collapse-ul">
-                        <li><a href="#">About</a></li>
-                        <li><a href="#">Stories</a></li>
-                        <li><a href="#">Login</a></li>
-                        <li id="cart"><a href="#">Cart</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
         <div id="bannerImage" class="container-fluid">
             <div class="img-overlay"></div>
             <div id="infobox" class="col-xs-10 col-md-6">
@@ -129,102 +95,20 @@
             <h3>featured products</h3>
         </div>
         <div class="row" id="f-products">
+          <% products.forEach(function(p) { %>  
             <div class="col-xs-6 col-md-3">
                 <div class="img-holder">
-                    <img src="./static/img/p2.jpg">
+                    <img src="<%= p.img %>">
                     <div class="product-info">
                         <a href="">
-                            <p>Fiber Bag</p>
-                            <span>£39.99</span>
+                            <p><%= p.label %></p>
+                            <span>£<%= p.price %></span>
                         </a>
                     </div>
                     <div class="img-overlay"></div>
                 </div>
             </div>
-            <div class="col-xs-6 col-md-3">
-                <div class="img-holder">
-                    <img src="./static/img/p3.jpg">
-                    <div class="product-info">
-                        <a href="">
-                            <p>Biker Leather</p>
-                            <span>£39.99</span>
-                        </a>
-                    </div>
-                    <div class="img-overlay"></div>
-                </div>
-            </div>
-            <div class="col-xs-6 col-md-3">
-                <div class="img-holder">
-                    <img src="./static/img/p4.jpg">
-                    <div class="product-info">
-                        <a href="">
-                            <p>Winter</p>
-                            <span>£39.99</span>
-                        </a>
-                    </div>
-                    <div class="img-overlay"></div>
-                </div>
-            </div>
-            <div class="col-xs-6 col-md-3">
-                <div class="img-holder">
-                    <img src="./static/img/p2.jpg">
-                    <div class="product-info">
-                        <a href="">
-                            <p>Swiss</p>
-                            <span>£39.99</span>
-                        </a>
-                    </div>
-                    <div class="img-overlay"></div>
-                </div>
-            </div>
-            <div class="col-xs-6 col-md-3">
-                <div class="img-holder">
-                    <img src="./static/img/p1.jpg">
-                    <div class="product-info">
-                        <a href="">
-                            <p>Swiss</p>
-                            <span>£39.99</span>
-                        </a>
-                    </div>
-                    <div class="img-overlay"></div>
-                </div>
-            </div>
-            <div class="col-xs-6 col-md-3">
-                <div class="img-holder">
-                    <img src="./static/img/p3.jpg">
-                    <div class="product-info">
-                        <a href="">
-                            <p>Biker Leather</p>
-                            <span>£39.99</span>
-                        </a>
-                    </div>
-                    <div class="img-overlay"></div>
-                </div>
-            </div>
-            <div class="col-xs-6 col-md-3">
-                <div class="img-holder">
-                    <img src="./static/img/p2.jpg">
-                    <div class="product-info">
-                        <a href="">
-                            <p>Fiber Bag</p>
-                            <span>£39.99</span>
-                        </a>
-                    </div>
-                    <div class="img-overlay"></div>
-                </div>
-            </div>
-            <div class="col-xs-6 col-md-3">
-                <div class="img-holder">
-                    <img src="./static/img/p2.jpg">
-                    <div class="product-info">
-                        <a href="">
-                            <p>Fiber Bag</p>
-                            <span>£39.99</span>
-                        </a>
-                    </div>
-                    <div class="img-overlay"></div>
-                </div>
-            </div>
+          <% }) %>
         </div>
     </div>
     <!-- featured end -->
@@ -315,51 +199,5 @@
             </div>
         </div>
     </div>
-    <footer class="container-fluid" id="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12 col-md-4">
-                    <h4>LIIFYE.CO.UK</h4>
-                    <p>Birmingham</p>
-                    <p>West Midlands</p>
-                    <p>B64 3LS</p>
-                    <p>Tel - 01872 666-666</p>
-                    <p>Email-liifye@liifye.co.uk</p>
-                </div>
-                <div class="col-xs-12 col-md-4">
-                    <h4>Additional Info.</h4>
-                    <p><a href="">Guarantee and Warranty</a></p>
-                    <p><a href="">FAQ</a></p>
-                    <p><a href="">Privacy Policy</a></p>
-                    <p><a href="">Shipping</a></p>
-                </div>
-                <div class="col-xs-12 col-md-4">
-                    <h4>Newsletter</h4>
-                    <p>Subscribe to get special offers and discounts.</p>
-                    <form>
-                        <input type="email" name="email" placeholder="Email address">
-                        <button class="btn btn-primary-transparent" type="submit">Submit</button>
-                    </form>
-                </div>
-            </div>
-            <div class="row">
-                <ul>
-                    <li><a href=""><i class="fa fa-facebook-square fa-3x" aria-hidden="true"></i></a></li>
-                    <li><a href=""><i class="fa fa-instagram fa-3x" aria-hidden="true"></i></a></li>
-                    <li><a href=""><i class="fa fa-pinterest fa-3x" aria-hidden="true"></i></a></li>
-                </ul>
-            </div>
-            <div class="row">
-                <ul>
-                    <li><a href="">© LIIFYE UK 2017</a></li>
-                    <li><a href="">Created by TBP</a></li>
-                    <li><a href="">Canvas Theme</a></li>
-                </ul>
-            </div>
-        </div>
-    </footer>
 
-    <script type="text/javascript" src="./static/js/liifye.js"></script>
-</body>
-
-</html>
+<%- include('./partials/footer') %>
