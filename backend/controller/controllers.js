@@ -27,22 +27,22 @@ passport.deserializeUser(User.deserializeUser());
 
 module.exports.authenticate = function(req, res, next) {
 
-    passport.authenticate("local", {failureFlash: true }, function(err, user, info){
-        if(err) {
-            console.log("one");
-            return res.render("login", {error: err, loggedIn: false});
-            
+    passport.authenticate("local", { failureFlash: true }, function(err, user, info) {
+        if (err) {
+
+            return res.render("login", { error: err, loggedIn: false });
+
         }
-        if(!user) {
-            console.log("two");
-            return res.render("login", {error: "Incorrect username/password.", loggedIn: false});
+        if (!user) {
+
+            return res.render("login", { error: "Incorrect username/password.", loggedIn: false });
         }
 
-        req.logIn(user, function(err){
-            if(err) {
-                console.log("three");
+        req.logIn(user, function(err) {
+            if (err) {
+
                 return next(err);
-            }            
+            }
             return next();
         });
     })(req, res, next);
@@ -65,52 +65,52 @@ module.exports.redir = function(req, res) {
 
 
 module.exports.home = function(req, res) {
-    
- 
-    Product.find({}, function(err, prods){
-        if(err) {
-            console.log(err);
-        } else {           
 
-            res.render("heights", {products: prods, loggedIn: req.user});
+
+    Product.find({}, function(err, prods) {
+        if (err) {
+            console.log(err);
+        } else {
+
+            res.render("heights", { products: prods, loggedIn: req.user });
         }
     });
-       
+
 }
 
 module.exports.loginPage = function(req, res) {
-    
+
     if (req.isAuthenticated()) {
         return res.redirect("/home");
     }
 
-    res.render("login", {error: false, loggedIn: false});
+    res.render("login", { error: false, loggedIn: false });
 }
 
 module.exports.registerPage = function(req, res) {
 
-    if(req.isAuthenticated()) {
+    if (req.isAuthenticated()) {
         return res.redirect("/home");
     }
 
-    res.render("register", {error: false, loggedIn: false});
+    res.render("register", { error: false, loggedIn: false });
 }
 
 module.exports.loginUser = function(req, res) {
 
     res.redirect("/home");
-    
+
 }
 
 module.exports.registerUser = function(req, res) {
 
-    if(req.body.username.length < 8 || req.body.password.length <8) {
-        var error = {message: "Username and password have to be at least 8 characters in length."}
-        return res.render("register", {error: error, loggedIn: false});
+    if (req.body.username.length < 8 || req.body.password.length < 8) {
+        var error = { message: "Username and password have to be at least 8 characters in length." }
+        return res.render("register", { error: error, loggedIn: false });
     }
 
- 
-    User.register(new User({email: req.body.email, username: req.body.username}), req.body.password, function(err, user){
+
+    User.register(new User({ email: req.body.email, username: req.body.username }), req.body.password, function(err, user) {
         if (err) {
 
             var errObject = {
@@ -118,12 +118,12 @@ module.exports.registerUser = function(req, res) {
                 message: "Registration failed: User or email already exists."
             };
 
-            return res.render("register", {error: errObject, loggedIn: false});            
+            return res.render("register", { error: errObject, loggedIn: false });
         }
 
-        passport.authenticate("local")(req, res, function(){
+        passport.authenticate("local")(req, res, function() {
             res.redirect("/home");
-        }); 
+        });
     });
 }
 
@@ -141,15 +141,66 @@ module.exports.productPage = function(req, res) {
 
     var prodID = req.params.productid;
 
-    Product.findById(prodID, function(err, product){
+    Product.findById(prodID, function(err, product) {
 
-        if(err) {
+        if (err) {
             return res.redirect("/home");
         }
 
-        console.log(product);
-
-        res.render("product", {product: product, loggedIn: req.user})
+        res.render("product", { product: product, loggedIn: req.user })
     });
-    
+
+}
+
+module.exports.createOrder = function(req, res) {
+
+    var session = req.session;
+
+    Product.findById(req.params.productid, function(err, prod) {
+
+        if (!session.order) {
+
+            Order.create({ order: [{ product: prod, quantity: req.body.quantity }] }, function(err, order) {
+                if (err) {
+                    return res.json({
+                        success: false,
+                        message: err
+                    });
+                }
+                order.paid = false;
+                order.price = prod.price * req.body.quantity;
+
+                if (req.isAuthenticated()) {                   
+
+                        order.email = req.user.email;
+                        order.save();
+                        req.user.orders.push(order);                        
+                   
+                }
+
+                session.order = order;
+                res.redirect("/home");
+                console.log(session.order);
+
+            });
+
+        } else {
+
+            session.order.order.push({ product: prod, quantity: req.body.quantity });
+            session.order.price = session.order.price + (prod.price * req.body.quantity);
+
+            if (req.isAuthenticated()) {
+            
+                req.user.orders = session.order.order;                    
+               
+            }
+
+            console.log(session.order);
+            res.redirect("/home");
+
+        }
+
+
+    });
+
 }

@@ -6,9 +6,15 @@ module.exports = new mongoose.Schema({
     price: Number,
     date: { type: Date, default: Date.now },
     paid: Boolean,
-    products: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Product"
-    }]
+    order: [
+
+        {
+            product: {
+                type: mongoose.Schema.Types.ObjectId,
+                ref: "Product"
+            },
+            quantity: Number
+        }
+    ]
 
 })

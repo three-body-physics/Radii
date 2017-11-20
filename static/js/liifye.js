@@ -1,5 +1,5 @@
 var body = $('html, body'),
-    shop = $('#collections');
+    shop = $('#featured');
 
 $('#scroll').click(function() {
 

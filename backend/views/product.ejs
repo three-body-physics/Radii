@@ -12,7 +12,7 @@
 			<h3><%= product.label %></h3>
 			<p>Proin ac mi id dolor laoreet blandit sed ut ligula. Fusce finibus eleifend dolor, sed vestibulum metus. Aenean id arcu non nunc fringilla ultrices. Aenean vehicula dui erat. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Cras bibendum mauris id laoreet ultrices. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nam sem arcu, bibendum eu massa eu, tincidunt blandit eros. Integer vel quam auctor, dapibus tortor tempor, vulputate risus. Integer orci lectus, fringilla vitae volutpat ultricies, posuere eu augue. Maecenas eget urna nec enim auctor viverra. Nulla imperdiet varius vestibulum. Nullam vel dolor risus. Nam at molestie lectus.</p>
 			<hr>
-			<form>
+			<form action="/home/products/<%= product._id %>" method="POST">
 				<p>Quantity:</p>
 				<input type="number" name="quantity" value="1" min="1" max="4">
 				<input type="submit" class="btn btn-primary-transparent" value="Add to Cart">
