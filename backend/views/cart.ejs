@@ -9,15 +9,14 @@
 		<div class="col-xs-12 col-md-8 col-md-offset-2">
 			<% if (order) { %>
 			<h4>items</h4>
+			<% var price = Math.round(order.price * 100) / 100 %>
 			<div class="row">			
 			<% order.products.forEach(function(p){ %>
-				<% console.log(p) %>
-			
-				<p> <a href="/home/products/<%= p.product._id %>"><%= p.product.label %></a> x <%= p.quantity  %></p>				
-			
+				<% console.log(p) %>			
+				<p> <a href="/home/products/<%= p.product._id %>"><%= p.product.label %></a> x <%= p.quantity  %></p>			
 			<% }); %>
 			<hr>
-			<p>Total: £ <%=  order.price  %> </p>
+			<p>Total: £ <%=  price  %> </p>
 			<form action="/home/cart/checkout" method="GET">			
   			<input type="submit" class="btn btn-primary-transparent" value="Place order">
 			</form>

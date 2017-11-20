@@ -11,6 +11,7 @@
 
 		<div class="col-xs-12 col-md-8 col-md-offset-2">
 		<% user.orders.forEach(function(o) { %>
+			<% var price = Math.round(o.price * 100) / 100 %>
 			<div class="row">
 			<hr>
 			<h4>Order ID: <%= o._id %></h4>			
@@ -18,7 +19,7 @@
 				<p> Item: <a href="/home/products/<%= p.product._id %>"><%= p.product.label  %></a> - Quantity: <%= p.quantity  %> </p>			
 			<% }) %>
 			
-			<p class="total">Total: £ <%= o.price %></p>
+			<p class="total">Total: £ <%= price %></p>
 			</div>
 		<% }); %>			
 		</div>

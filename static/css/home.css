@@ -114,20 +114,14 @@ h4:after {
     margin-top: 2px;
 }
 
-#cart {
-
-    padding: 1.3em;
-}
-
-
 .navbar-nav li {
     margin: 0;
-    padding: 1.3em;
+    /*padding: 1.3em;*/
     font-size: 0.75em;
 }
 
 .navbar-nav li a {
-    padding: 0;
+    padding: 1.3em;
 }
 
 #bannerImage {
@@ -333,6 +327,7 @@ ul li:hover {
     -webkit-transition: all 3s ease;
     -o-transition: all 3s ease;
     transition: all 3s ease;
+    filter: grayscale(0.2);
 }
 
 .content-layer h2 {
@@ -377,6 +372,7 @@ ul li:hover {
     -webkit-transform: scale(1.1, 1.1);
     -ms-transform: scale(1.1, 1.1);
     transform: scale(1.1, 1.1);
+    filter: grayscale(0);
 }
 
 .img-overlay {
@@ -461,6 +457,7 @@ ul li:hover {
     display: block;
     position: relative;
     height: 397px;
+    filter: grayscale(0.4);
 }
 
 #msg-img-one {
@@ -817,12 +814,14 @@ img {
     -webkit-transition: all 3s ease;
     -o-transition: all 3s ease;
     transition: all 3s ease;
+    filter: grayscale(0.5);
 }
 
 #experiences .row .col-xs-12 a:hover .ex-img {
     -webkit-transform: scale(1.1, 1.1);
     -ms-transform: scale(1.1, 1.1);
     transform: scale(1.1, 1.1);
+    filter: grayscale(0);
 }
 
 #ex-one {
@@ -1161,9 +1160,9 @@ img {
 
 @media (min-width: 768px) {
 
-    #cart {
+/*    #cart {
         background: orange;
-    }
+    }*/
 }
 
 @media (min-width: 1199px) {
