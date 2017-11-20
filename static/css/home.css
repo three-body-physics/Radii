@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Cutive+Mono|Questrial');
+@import url('https://fonts.googleapis.com/css?family=Cutive+Mono');
 @import url('https://fonts.googleapis.com/css?family=Tinos:400,700');
 
 
@@ -15,7 +15,7 @@ h2,
 h3,
 h4 {
     text-align: center;
-    font-family: 'Questrial', sans-serif;
+    font-family: 'Tinos', serif;
     text-transform: uppercase;
 }
 
@@ -94,7 +94,7 @@ h4:after {
 
 #navbar {
 
-    font-family: 'Questrial', sans-serif;
+    font-family: 'Tinos', serif;
     background: white;
     border: none;
     margin: 0;
@@ -608,8 +608,9 @@ img {
 
     position: relative;
     padding-bottom: 1em;        
-    letter-spacing: 0.1em;
+    letter-spacing: 0.2em;
     color: white;
+    font-family: 'Tinos', serif;
 }
 
 #newsletter h3:after {
@@ -634,7 +635,8 @@ img {
 
 #newsletter h4 {
     color: white;
-    opacity: 0.6;
+    opacity: 1;
+    font-family: 'Cutive Mono', monospace;
 }
 
 #newsletter h4:after {
