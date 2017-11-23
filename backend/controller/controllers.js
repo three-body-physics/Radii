@@ -23,7 +23,6 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-//middelware for checking if User logged in or not, token from header is decoded and verified to see if it belongs to Admin
 var session;
 
 // var seed = require("./seeds.js");
