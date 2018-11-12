@@ -180,12 +180,13 @@ module.exports.createOrder = function(req, res) {
 
     session = req.session;
 
+
     Product.findById(req.params.productid, function(err, prod) {
 
         if (!session.order) {
 
             session.order = {
-                price: prod.price,
+                price: prod.price * req.body.quantity,
                 paid: false,
                 products: [{
                     product: prod,
@@ -206,7 +207,8 @@ module.exports.createOrder = function(req, res) {
 
         }
 
-        res.redirect("/home");
+
+        res.redirect("/home/cart");
 
 
     });
@@ -224,18 +226,32 @@ module.exports.cart = function(req, res) {
 module.exports.checkOut = function(req, res) {
 
     session = req.session;
+    
 
-    User.findById(req.user._id, function(err, user) {
+    User.findById(req.user._id).populate("orders").exec(function(err, user) {
         if (err) {
             return console.log(err)
         }
 
-        req.session.order.email = user.email;
+        session.order.email = user.email;
+
         Order.create(session.order, function(err, order) {
+
+            if (err) {
+                return console.log(err);
+            }
+
             order.paid = true;
-            order.save();
-            user.orders.push(order);
-            user.save();
+            order.save();            
+            user.orders = user.orders.concat(order);
+            console.log(user);                  
+            user.save(function(err) {
+                if(err) {
+                    console.log(err);
+                }
+            });
+           
+           
             
         });
 
