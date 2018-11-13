@@ -6,13 +6,13 @@ https://radiicommerce.herokuapp.com/home
 
 heights.html is deprecated, please refer to the following for page templates:
 
-./backend/views
+> ./backend/views
 
 Please either register a new account or use the following one for testing:
 
-username: testcustomer2
+> username: testcustomer2
 
-password: testcustomer2
+> password: testcustomer2
 
 ## Working pages
 
@@ -28,8 +28,8 @@ password: testcustomer2
 
 ## Testing
 
-$ npm install 
+> $ npm install 
 
-$ node app.js
+> $ node app.js
 
 If running on localhost it defaults to port 3000.
