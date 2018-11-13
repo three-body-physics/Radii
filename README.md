@@ -11,6 +11,7 @@ heights.html is deprecated, please refer to the following for page templates:
 Please either register a new account or use the following one for testing:
 
 username: testcustomer2
+
 password: testcustomer2
 
 ## Testing
