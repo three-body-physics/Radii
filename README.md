@@ -14,6 +14,18 @@ username: testcustomer2
 
 password: testcustomer2
 
+## Working pages
+
+> landing page
+
+> login
+
+> register
+
+> cart
+
+> featured products
+
 ## Testing
 
 $ npm install 
