@@ -11,6 +11,7 @@ heights.html is deprecated, please refer to the following for page templates:
 ## Testing
 
 $ npm install 
+
 $ node app.js
 
 If running on localhost it defaults to port 3000.
